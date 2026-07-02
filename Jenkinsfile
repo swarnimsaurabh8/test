@@ -4,7 +4,7 @@ pipeline {
     environment {
         PROJECT = "WebApplication5/WebApplication5.csproj"
         PUBLISH_DIR = "D:\\publish"
-        APPPOOL = "DefaultAppPool"      // Change if your app pool has a different name
+        APPPOOL = "TestNew"      // Change if your app pool has a different name
     }
 
     stages {
