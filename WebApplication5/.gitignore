@@ -1,0 +1,46 @@
+﻿# Build folders
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# VS Code
+.vscode/
+
+# NuGet
+packages/
+*.nupkg
+
+# Logs
+*.log
+
+# Publish folder
+publish/
+
+# IIS publish
+wwwroot/uploads/
+
+# Test Results
+TestResults/
+
+# ReSharper
+_ReSharper*/
+*.DotSettings.user
+
+# Azure
+PublishProfiles/
+
+# OS Files
+Thumbs.db
+Desktop.ini
+
+# Mac
+.DS_Store
