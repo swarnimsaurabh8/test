@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         PROJECT = "WebApplication5/WebApplication5.csproj"
-        PUBLISH_FOLDER = "D:\\publish"
-        APPPOOL = "WebApplication5"
+        PUBLISH_DIR = "D:\\publish"
+        APPPOOL = "DefaultAppPool"      // Change if your app pool has a different name
     }
 
     stages {
@@ -30,20 +30,39 @@ pipeline {
 
         stage('Stop IIS') {
             steps {
-                bat 'C:\\Windows\\System32\\inetsrv\\appcmd stop apppool /apppool.name:"%APPPOOL%"'
+                bat '''
+                C:\\Windows\\System32\\inetsrv\\appcmd stop apppool /apppool.name:"%APPPOOL%"
+                '''
             }
         }
 
         stage('Publish') {
             steps {
-                bat "dotnet publish %PROJECT% -c Release -o %PUBLISH_FOLDER% --no-build"
+                bat "dotnet publish %PROJECT% -c Release -o %PUBLISH_DIR% --no-build"
             }
         }
 
         stage('Start IIS') {
             steps {
-                bat 'C:\\Windows\\System32\\inetsrv\\appcmd start apppool /apppool.name:"%APPPOOL%"'
+                bat '''
+                C:\\Windows\\System32\\inetsrv\\appcmd start apppool /apppool.name:"%APPPOOL%"
+                '''
             }
+        }
+    }
+
+    post {
+
+        success {
+            echo '======================================='
+            echo ' Build & Deployment Successful'
+            echo '======================================='
+        }
+
+        failure {
+            echo '======================================='
+            echo ' Build or Deployment Failed'
+            echo '======================================='
         }
     }
 }
