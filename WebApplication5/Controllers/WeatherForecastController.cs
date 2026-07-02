@@ -8,7 +8,7 @@ namespace WebApplication5.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-            "A1", "A2", "A2", "A3", "A4", "Warm", "Balmy", "Hot","HotSwarnim", "Sweltering", "Scorching"
+            "A1", "A2"
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
@@ -21,7 +21,7 @@ namespace WebApplication5.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
-            return Enumerable.Range(1, 100).Select(index => new WeatherForecast
+            return Enumerable.Range(1, 3).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
                 TemperatureC = Random.Shared.Next(-20, 55),
